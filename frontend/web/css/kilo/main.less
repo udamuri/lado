@@ -1,0 +1,285 @@
+@import url(http://fonts.googleapis.com/css?family=Fjalla+One);
+//Fjalla-one.woff
+
+@font-face {
+    font-family: "Fjalla-one";
+    //src: url('Fjalla-one.woff') format('woff');
+    src: url('FjallaOne-Regular.ttf') , url('Fjalla-one.woff') format('woff');
+}
+
+@min1440:  ~"(min-width: 1440px)";
+@min1024:  ~"(min-width: 1024px)";
+@jumbo:  ~"(min-width: 768px)";
+@jumbo1:  ~"(min-width: 992px)";
+@midi:  ~"(max-width: 767px)";
+@min768max992: ~"(min-width: 768px) and (max-width: 992px)";
+@min993max1200: ~"(min-width: 993px) and (max-width: 1200px)";
+
+
+@body : #f4f4f4 ;
+// @main_color: #990066;
+// @main_color_gradient: #840058;
+
+@main_color: #006633;
+@main_color_gradient: #005128;
+
+@white_color : #fff;
+@white_color1 : #d8d8d8;
+
+@danger_color : #d9534f;
+@primary_color : #428bca;
+@success_color : #2dcc70;
+// @success_color : #5cb85c;
+@info_color:    #5bc0de;
+@warning_color: #f0ad4e;
+
+@fb: #4867AA;
+@twit: #1DA1F2;
+@git: #000000;
+@linked: #0177B5;
+@tube: #d9534f;
+
+@main-darker:  lighten(@main_color, 5.5%);
+@danger-darker:  lighten(@danger_color, 13.5%);
+@primary-darker:  lighten(@primary_color, 13.5%);
+@success-darker:  lighten(@success_color, 13.5%);
+@info-darker:  lighten(@info_color, 13.5%);
+@warning-darker:  lighten(@warning_color, 13.5%);
+
+.margin-top20
+{
+    margin-top: 20px;
+}
+
+.margin-top40
+{
+    margin-top: 40px;
+}
+
+h1,h2,h3,h4,h5,h6
+{
+    color: @main_color;
+}
+
+body {
+    padding-top: 70px;
+    font-size: 12px;
+    background-color:@body;
+    font-family:Raleway,Helvetica,Arial,sans-serif;
+    font-size:14px;
+}
+
+.border-radius(@radius : 0.3em)
+{
+    -webkit-border-radius: @radius;
+    -moz-border-radius: @radius;
+    border-radius: @radius;
+}
+
+.header
+{
+    background-color:@main_color;
+    background-image: url(img/header.jpeg);
+    background-repeat: no-repeat;
+    background-position: center;
+    // background-size: 100%; 
+    background-size: cover !important;
+    min-height: 400px;
+    @media @min768max992
+    {
+       min-height: 300px; 
+    }
+
+    @media @midi 
+    {
+        min-height: 200px;
+    }
+}
+
+.feature
+{
+    min-height: 300px;
+}
+
+#mycarouselx {
+
+
+}
+
+.hr-text {
+  line-height: 1em;
+  position: relative;
+  outline: 0;
+  border: 0;
+  color: black;
+  text-align: center;
+  height: 1.5em;
+  opacity: .5;
+  &:before {
+    content: '';
+    // use the linear-gradient for the fading effect
+    // use a solid background color for a solid bar
+    background: linear-gradient(to right, transparent, #818078, transparent);
+    position: absolute;
+    left: 0;
+    top: 50%;
+    width: 100%;
+    height: 1px;
+  }
+  &:after {
+    content: attr(data-content);
+    position: relative;
+    display: inline-block;
+    color: black;
+
+    padding: 0 .5em;
+    line-height: 1.5em;
+    // this is really the only tricky part, you need to specify the background color of the container element...
+    color: #818078;
+    background-color: #fcfcfa;
+  }
+}
+
+#footer
+{
+    h1,h2,h3,h4,h5,h6
+    {
+        color: @white_color;
+    }
+    p {
+        color: @white_color1;
+    }
+    background: @main_color;
+    color: @white_color;
+    min-height: 100px;
+    padding: 20px 0 10px 0;
+    .footer-head
+    {
+        padding-bottom:10px;
+    }
+
+    .footer-content
+    {
+        padding-top:20px;
+        padding-bottom:20px;
+        border-top: 1px solid @main-darker;
+
+        a>i.me-fb
+        {
+            color: @fb;
+            background-color:@white_color; 
+            font-size: 30px;
+        }
+
+        a>i.me-twit
+        {
+            color: @twit;
+            background-color:@white_color; 
+            font-size: 30px;
+        }
+
+        a>i.me-git
+        {
+            color: @git;
+            background-color:@white_color; 
+            font-size: 30px;
+        }
+
+        a>i.me-linked
+        {
+            color: @linked;
+            background-color:@white_color; 
+            font-size: 30px;
+        }
+
+        a>i.me-tube
+        {
+            color: @tube;
+            background-color:@white_color; 
+            font-size: 30px;
+        }
+
+        a>i.me-insta
+        {
+            color: @white_color;
+            background: linear-gradient( #400080, transparent), 
+                        linear-gradient( 200deg, #d047d1, #ff0000,    #ffff00);
+            font-size: 30px;
+        }
+
+        ul li a 
+        {
+            text-decoration: none;
+            color: @white_color;
+            &:hover {
+                color: @white_color1;  
+            }
+        }
+    }
+
+    .footer-text
+    {
+        padding-top:10px;
+        border-top: 1px solid @main-darker;
+    }
+}
+
+
+.carousel-control{ width:  4%; }
+.carousel-control.left,.carousel-control.right 
+{
+    // margin-left:15px;
+    background-image: none;
+    i {
+        color: @main_color;
+    }
+}
+@media @midi {
+    .carousel-inner .active.left { left: -100%; }
+    .carousel-inner .next        { left:  100%; }
+    .carousel-inner .prev        { left: -100%; }
+    .active > div { display:none; }
+    .active > div:first-child { display:block; }
+
+}
+@media @min768max992 {
+    .carousel-inner .active.left { left: -50%; }
+    .carousel-inner .next        { left:  50%; }
+    .carousel-inner .prev        { left: -50%; }
+    .active > div { display:none; }
+    .active > div:first-child { display:block; }
+    .active > div:first-child + div { display:block; }
+}
+@media @jumbo1 {
+    .carousel-inner .active.left { left: -25%; }
+    .carousel-inner .next        { left:  25%; }
+    .carousel-inner .prev        { left: -25%; }    
+}
+
+.breadcrumb { 
+  background-color: @main_color;
+    li a {
+      color: @white_color;
+      text-decoration: none;
+    }
+
+    li.active {
+        color: @white_color1;
+        text-decoration: none;
+    }
+}
+
+
+.panel-self {
+    border: 1px solid @main_color;
+}
+
+.panel-self > .panel-heading, .panel-self > .panel-footer {
+  color: @white_color;
+  background-image: -webkit-linear-gradient(top, @main_color 0%, @main_color_gradient 100%);
+  background-image: -o-linear-gradient(top, @main_color 0%, @main_color_gradient 100%);
+  background-image: -webkit-gradient(linear, left top, left bottom, from(@main_color), to(@main_color_gradient));
+  background-image: linear-gradient(to bottom, @main_color 0%, @main_color_gradient 100%);
+  background-repeat: repeat-x;
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr=@main_color, endColorstr=@main_color_gradient, GradientType=0);
+}
