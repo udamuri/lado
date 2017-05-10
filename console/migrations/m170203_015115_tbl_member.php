@@ -14,6 +14,8 @@ class m170203_015115_tbl_member extends Migration
 
         $this->createTable('{{%member}}', [
             'id' => $this->primaryKey(),
+            'firstname' => $this->string(50)->notNull(),
+            'lastname' => $this->string(50)->notNull(),
             'username' => $this->string()->notNull()->unique(),
             'auth_key' => $this->string(32)->notNull(),
             'password_hash' => $this->string()->notNull(),
@@ -26,7 +28,7 @@ class m170203_015115_tbl_member extends Migration
             'level' => $this->integer(2)->notNull()->defaultValue(1),
         ], $tableOptions);
 
-        $this->execute('INSERT INTO `member` (`id`, `username`, `auth_key`, `password_hash`, `password_reset_token`, `email`, `status`, `level`, `created_at`, `updated_at`) VALUES(1, "muribudiman", "bH6TzAW14WCsApOrNJa9xCXMURJD-tYO", "$2y$13$ZhJaFCaf24xdlkUoNA9vV.9jxLTLz5XXl8jYR14jzlrAeUSKzRGHm", NULL, "udamuri@gmail.com", 10, 84, 1469931763, 1477723541)');
+        $this->execute('INSERT INTO `member` (`firstname`, `lastname`, `username`, `auth_key`, `password_hash`, `password_reset_token`, `email`, `status`, `level`, `created_at`, `updated_at`) VALUES("Muri", "Budiman", muribudiman", "bH6TzAW14WCsApOrNJa9xCXMURJD-tYO", "$2y$13$ZhJaFCaf24xdlkUoNA9vV.9jxLTLz5XXl8jYR14jzlrAeUSKzRGHm", NULL, "udamuri@gmail.com", 10, 84, 1469931763, 1477723541)');
         
     }
 

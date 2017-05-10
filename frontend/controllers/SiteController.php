@@ -150,10 +150,14 @@ class SiteController extends Controller
         $model = new SignupForm();
         if ($model->load(Yii::$app->request->post())) {
             if ($user = $model->signup()) {
-                // if (Yii::$app->getUser()->login($user)) {
-                    
-                // }
-                Yii::$app->session->setFlash('success', "Berhasil Mendaftar Di Lado, Silahkan perikasa email untuk mengaktifkan akun anda");
+                \Yii::$app->getSession()->setFlash('success', 'Berhasil Mendaftar Di Lado, Silahkan perikasa email untuk mengaktifkan akun anda');
+                //$this->redirect(Yii::$app->homeUrl.'signup');
+                return $this->refresh()->send();
+            }
+            else
+            {
+                 Yii::$app->session->setFlash('error', 'Error Message');
+                 return $this->refresh()->send();
             }
         }
 

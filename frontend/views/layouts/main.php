@@ -8,7 +8,8 @@ use yii\bootstrap\Nav;
 use yii\bootstrap\NavBar;
 use yii\widgets\Breadcrumbs;
 use frontend\assets\AppAsset;
-use common\widgets\Myalert;
+// use common\widgets\Myalert;
+use frontend\widgets\Alert;
 
 AppAsset::register($this);
 
@@ -65,7 +66,7 @@ if(!$b_name)
 
 <?php
   $mtop = '';
-  $alert = Myalert::widget();
+  $alert = Alert::widget();
   if($alert!== '' || isset($this->params['breadcrumbs']))
   {
     $mtop = 'margin-top20';
@@ -75,7 +76,7 @@ if(!$b_name)
     <?= Breadcrumbs::widget([
         'links' => isset($this->params['breadcrumbs']) ? $this->params['breadcrumbs'] : [],
     ]) ?>
-    <?= Myalert::widget(); ?>
+    <?= Alert::widget() ?>
 </section>
 
 <?= $content ?>      

@@ -9,6 +9,8 @@ use common\models\Member;
  */
 class SignupForm extends Model
 {
+    public $firstname;
+    public $lastname;
     public $username;
     public $email;
     public $password;
@@ -20,6 +22,15 @@ class SignupForm extends Model
     public function rules()
     {
         return [
+            ['firstname', 'trim'],
+            ['firstname', 'required'],
+            ['firstname', 'string', 'max' => 50],
+
+            ['lastname', 'trim'],
+            ['lastname', 'required'],
+            ['lastname', 'string', 'max' => 50],
+
+
             ['username', 'trim'],
             ['username', 'required'],
             ['username', 'unique', 'targetClass' => '\common\models\Member', 'message' => 'username sudah terdaftar'],
@@ -55,5 +66,18 @@ class SignupForm extends Model
         $user->generateAuthKey();
         
         return $user->save() ? $user : null;
+    }
+
+    /**
+     * @inheritdoc
+     */
+    public function attributeLabels()
+    {
+        return [
+            'firstname' => 'Nama Depan',
+            'lastname' => 'Nama Belakang',
+            'email' => 'Email',
+            'password' => 'Password',
+        ];
     }
 }
