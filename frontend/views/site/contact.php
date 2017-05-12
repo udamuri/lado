@@ -16,19 +16,19 @@ $this->registerCssFile(Yii::$app->homeUrl.'css/lates_product.css', [
     //'media' => 'print',
 ]);
 ?>
-<div class="detail-content">
-    <div class="container">
-        <div class="site-contact">
+<div class="container">
+    <div class="panel panel-default">
+        <div class="panel-body">
             <div class="row">
                 <div class="col-lg-6">
                     <div class="content-bottom-right"><h3>Kontak Kami</h3></div>
                     <?php $form = ActiveForm::begin(['id' => 'contact-form']); ?>
 
-                        <?= $form->field($model, 'name')->textInput(['autofocus' => true])->label('Nama Lengkap'); ?>
+                        <?= $form->field($model, 'name')->textInput(['autofocus' => true, 'class'=>'form-control input-lg'])->label('Nama Lengkap'); ?>
 
-                        <?= $form->field($model, 'email')->label('Alamat Email'); ?>
+                        <?= $form->field($model, 'email')->textInput(['class'=>'form-control input-lg'])->label('Alamat Email'); ?>
 
-                        <?= $form->field($model, 'subject')->label('Subjek'); ?>
+                        <?= $form->field($model, 'subject')->textInput(['class'=>'form-control input-lg'])->label('Subjek'); ?>
 
                         <?= $form->field($model, 'body')->textarea(['rows' => 6])->label('Pesan'); ?>
 
@@ -37,7 +37,7 @@ $this->registerCssFile(Yii::$app->homeUrl.'css/lates_product.css', [
                         ]) ?>
 
                         <div class="form-group">
-                            <?= Html::submitButton('Submit', ['class' => 'btn btn-primary', 'name' => 'contact-button']) ?>
+                            <?= Html::submitButton('Submit', ['class' => 'btn btn-primary btn-lg', 'name' => 'contact-button']) ?>
                         </div>
 
                     <?php ActiveForm::end(); ?>

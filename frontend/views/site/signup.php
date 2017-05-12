@@ -10,14 +10,13 @@ use yii\captcha\Captcha;
 
 $this->title = 'Daftar';
 $this->params['breadcrumbs'][] = $this->title;
-$jsx = <<< 'SCRIPT'
-    $("#refresh-captcha").on('click',function(e){
-        //#testimonials-captcha-image is my captcha image id
-        $("img[id$='signupform-verifycode-image']").trigger('click');
-        e.preventDefault();
-    });
-SCRIPT;
-$this->registerJs($jsx);
+// $jsx = <<< 'SCRIPT'
+//     $("#refresh-captcha").on('click',function(e){
+//         $("img[id$='signupform-verifycode-image']").trigger('click');
+//         e.preventDefault();
+//     });
+// SCRIPT;
+// $this->registerJs($jsx);
 ?>
 <div class="container">
     <div class="panel panel-default">
@@ -40,9 +39,6 @@ $this->registerJs($jsx);
                         <?= $form->field($model, 'verifyCode')->widget(Captcha::className(), [
                             'template' => '<div class="row"><div class="col-lg-3">{image}</div><div class="col-lg-6">{input}</div></div>',
                         ]) ?>
-
-                        <?php echo Html::button('Refresh captcha', ['id' => 'refresh-captcha', 'class'=>'btn btn-default']);?>
-                        <br>
                         <div class="clearfix"></div>
 
                         <div class="form-group">
