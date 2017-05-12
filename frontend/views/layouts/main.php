@@ -46,19 +46,25 @@ if(!$b_name)
         ['label' => '<i class="fa fa-home"></i>&nbsp;Dashboard', 'url' => ['/dashboard']],
     ];
 
-    if (Yii::$app->user->isGuest) {
-        $menuItems[] = ['label' => '<i class="fa fa-user"></i>&nbsp;Daftar', 'url' => ['/signup']];
-        $menuItems[] = ['label' => '<i class="fa fa-key"></i>&nbsp;Masuk', 'url' => ['/login']];
-    } 
-    else 
-    {
-        $menuItems[] = ['label' => '<i class="fa fa-key"></i>&nbsp;Keluar ('.Yii::$app->user->identity->username.')', 'url' => ['/site/logout'], 'linkOptions'=>['data-method'=>'post']];
-    }
-
-   
     echo Nav::widget([
         'options' => ['class' => 'navbar-nav navbar-left'],
         'items' => $menuItems,
+        'encodeLabels' => false ,
+    ]);
+
+    $menuItems_r = [];
+    if (Yii::$app->user->isGuest) {
+        $menuItems_r[] = ['label' => '<i class="fa fa-user"></i>&nbsp;Daftar', 'url' => ['/signup']];
+        $menuItems_r[] = ['label' => '<i class="fa fa-key"></i>&nbsp;Masuk', 'url' => ['/login']];
+    } 
+    else 
+    {
+        $menuItems_r[] = ['label' => '<i class="fa fa-key"></i>&nbsp;Keluar ('.Yii::$app->user->identity->username.')', 'url' => ['/site/logout'], 'linkOptions'=>['data-method'=>'post']];
+    }
+
+    echo Nav::widget([
+        'options' => ['class' => 'navbar-nav navbar-right'],
+        'items' => $menuItems_r,
         'encodeLabels' => false ,
     ]);
     NavBar::end();
