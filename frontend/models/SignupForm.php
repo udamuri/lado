@@ -14,6 +14,7 @@ class SignupForm extends Model
     public $username;
     public $email;
     public $password;
+    public $verifyCode;
 
 
     /**
@@ -44,6 +45,9 @@ class SignupForm extends Model
 
             ['password', 'required'],
             ['password', 'string', 'min' => 6],
+
+            // verifyCode needs to be entered correctly
+            ['verifyCode', 'captcha'],
         ];
     }
 
@@ -78,6 +82,7 @@ class SignupForm extends Model
             'lastname' => 'Nama Belakang',
             'email' => 'Email',
             'password' => 'Password',
+            'verifyCode' => 'Kode verifikasi',
         ];
     }
 }
