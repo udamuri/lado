@@ -125,9 +125,9 @@ class SiteController extends Controller
         $model = new ContactForm();
         if ($model->load(Yii::$app->request->post()) && $model->validate()) {
             if ($model->sendEmail(Yii::$app->params['adminEmail'])) {
-                Yii::$app->session->setFlash('success', 'Thank you for contacting us. We will respond to you as soon as possible.');
+                Yii::$app->session->setFlash('success', 'Terima kasih sudah menghubungi kami. Kami akan menanggapi Anda sesegera mungkin.');
             } else {
-                Yii::$app->session->setFlash('error', 'There was an error sending email.');
+                Yii::$app->session->setFlash('error', 'Terjadi kesalahan saat mengirim email.');
             }
 
             return $this->refresh();
@@ -180,11 +180,12 @@ class SiteController extends Controller
         $model = new PasswordResetRequestForm();
         if ($model->load(Yii::$app->request->post()) && $model->validate()) {
             if ($model->sendEmail()) {
-                Yii::$app->session->setFlash('success', 'Check your email for further instructions.');
-
-                return $this->goHome();
+                Yii::$app->session->setFlash('success', 'Periksa email Anda untuk petunjuk lebih lanjut.');
+                var_dump($_SESSION); 
+                Yii::$app->end();
+                return $this->refresh();
             } else {
-                Yii::$app->session->setFlash('error', 'Sorry, we are unable to reset password for email provided.');
+                Yii::$app->session->setFlash('error', 'Maaf, kami tidak dapat mereset kata sandi untuk email yang diberikan.');
             }
         }
 
