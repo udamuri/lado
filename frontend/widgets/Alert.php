@@ -74,7 +74,7 @@ class Alert extends \yii\bootstrap\Widget
                     ]);
                 }
 
-                $session->removeFlash($type);
+                //$session->removeFlash($type);
             }
         }
     }

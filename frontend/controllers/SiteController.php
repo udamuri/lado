@@ -181,8 +181,6 @@ class SiteController extends Controller
         if ($model->load(Yii::$app->request->post()) && $model->validate()) {
             if ($model->sendEmail()) {
                 Yii::$app->session->setFlash('success', 'Periksa email Anda untuk petunjuk lebih lanjut.');
-                var_dump($_SESSION); 
-                Yii::$app->end();
                 return $this->refresh();
             } else {
                 Yii::$app->session->setFlash('error', 'Maaf, kami tidak dapat mereset kata sandi untuk email yang diberikan.');
