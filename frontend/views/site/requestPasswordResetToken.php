@@ -24,7 +24,7 @@ $this->params['breadcrumbs'][] = $this->title;
                         <?= $form->field($model, 'email')->textInput(['autofocus' => true, 'class'=>'form-control input-lg']) ?>
 
                         <div class="form-group">
-                            <?= Html::submitButton('Send', ['class' => 'btn btn-primary btn-lg']) ?>
+                            <?= Html::submitButton('Kirim', ['class' => 'btn btn-primary btn-lg']) ?>
                         </div>
 
                     <?php ActiveForm::end(); ?>

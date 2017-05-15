@@ -54,8 +54,14 @@ return [
                 'dashboard'=>'site/index',
                 'login'=>'site/login',
                 'signup'=>'site/signup',
-		      'signup'=>'site/signup',
+                'signup'=>'site/signup',
+		        'profile'=>'member/site/index',
             ],
+        ],
+    ],
+    'modules' => [
+        'member' => [
+            'class' => 'app\modules\member\module',
         ],
     ],
     'params' => $params,

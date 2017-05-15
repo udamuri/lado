@@ -13,7 +13,7 @@ use frontend\widgets\Alert;
 
 AppAsset::register($this);
 
-$b_name = Yii::$app->mycomponent->frontendOptions('_blog_name');
+$b_name = Yii::$app->mycomponent->frontendOptions('_blog_name').' '.$this->title;
 if(!$b_name)
 {
     $b_name = $this->title;
@@ -42,48 +42,64 @@ if(!$b_name)
             'class' => 'navbar-default navbar-fixed-top',
         ],
     ]);
-    $menuItems = [
-        ['label' => '<i class="fa fa-home"></i>&nbsp;Dashboard', 'url' => ['/dashboard']],
-    ];
+            $menuItems = [
+                ['label' => '<i class="fa fa-home"></i>&nbsp;Dashboard', 'url' => ['/dashboard']],
+            ];
 
-    echo Nav::widget([
-        'options' => ['class' => 'navbar-nav navbar-left'],
-        'items' => $menuItems,
-        'encodeLabels' => false ,
-    ]);
+            echo Nav::widget([
+                'options' => ['class' => 'navbar-nav navbar-left'],
+                'items' => $menuItems,
+                'encodeLabels' => false ,
+            ]);
 
-    $menuItems_r = [];
-    if (Yii::$app->user->isGuest) {
-        $menuItems_r[] = ['label' => '<i class="fa fa-user"></i>&nbsp;Daftar', 'url' => ['/signup']];
-        $menuItems_r[] = ['label' => '<i class="fa fa-key"></i>&nbsp;Masuk', 'url' => ['/login']];
-    } 
-    else 
-    {
-        $menuItems_r[] = ['label' => '<i class="fa fa-key"></i>&nbsp;Keluar ('.Yii::$app->user->identity->username.')', 'url' => ['/site/logout'], 'linkOptions'=>['data-method'=>'post']];
-    }
+            $menuItems_r = [];
+            if (Yii::$app->user->isGuest) {
+                $menuItems_r[] = ['label' => '<i class="fa fa-user"></i>&nbsp;Daftar', 'url' => ['/signup']];
+                $menuItems_r[] = ['label' => '<i class="fa fa-key"></i>&nbsp;Masuk', 'url' => ['/login']];
+            } 
+            else 
+            {
+                //$menuItems_r[] = ['label' => '<i class="fa fa-key"></i>&nbsp;Keluar ('.Yii::$app->user->identity->username.')', 'url' => ['/site/logout'], 'linkOptions'=>['data-method'=>'post']];
 
-    echo Nav::widget([
-        'options' => ['class' => 'navbar-nav navbar-right'],
-        'items' => $menuItems_r,
-        'encodeLabels' => false ,
-    ]);
+                $menuItems_r[] = '<li class="dropdown padding_null">
+                          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false" ><img class="profile_picture_header its_me_class_bro" src="'.Yii::$app->mycomponent->userAvatar(Yii::$app->user->identity->id).'"/></a>
+                          <ul class="dropdown-menu" role="menu">
+                            <li class="dropdown-header">'.Yii::$app->user->identity->firstname.'</li>
+                            <li class="divider"></li>
+                            <li><a href="'.Yii::$app->homeUrl.'profile"><i class="fa fa-user icon-mn"></i>&nbsp;Setting Profile</a></li>
+                            <li><a href="'.Yii::$app->homeUrl.'map-profile"><i class="fa fa-map-marker icon-mn"></i>&nbsp;Lokasi Saya</a></li>
+                            <li class="divider"></li>
+                            <li><a href="'.Yii::$app->homeUrl.'site/logout" data-method="post"><i class="fa fa-map-marker icon-mn"></i>&nbsp;Logout</a></li>
+                          </ul>
+                        </li>';
+            }
+
+            echo Nav::widget([
+                'options' => ['class' => 'navbar-nav navbar-right'],
+                'items' => $menuItems_r,
+                'encodeLabels' => false ,
+            ]);
     NavBar::end();
     ?>
 
 <?php
-  $mtop = '';
-  $alert = Alert::widget();
-  if($alert!== '' || isset($this->params['breadcrumbs']))
-  {
-    $mtop = 'margin-top20';
-  }
+$isFrontpage = false;
+$controllerl = Yii::$app->controller;
+$homecheker = Yii::$app->controller->module->id.'/'.$controllerl->id.'/'.$controllerl->action->id;
+if($homecheker=='app-frontend/site/index')
+{
+    $isFrontpage = true;
+}
 ?>
-<section class="container <?=$mtop;?>">
+
+<?php if(!$isFrontpage) { ?>
+<section class="container margin-top20">
     <?= Breadcrumbs::widget([
         'links' => isset($this->params['breadcrumbs']) ? $this->params['breadcrumbs'] : [],
     ]) ?>
     <?= Alert::widget() ?>
 </section>
+<?php } ?>
 
 <?= $content ?>      
 

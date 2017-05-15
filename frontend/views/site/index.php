@@ -6,6 +6,7 @@ use app\components\Constants;
 /* @var $this yii\web\View */
 
 $this->title = Yii::$app->name;
+$this->params['breadcrumbs'][] = $this->title;
 $this->registerJsFile(Yii::$app->homeUrl."js/home.js", ['depends' => [\yii\web\JqueryAsset::className()]]);
 //$this->registerCssFile(Yii::$app->homeUrl.'css/lates_product.css', [
     //'depends' => [\yii\bootstrap\BootstrapAsset::className()],
