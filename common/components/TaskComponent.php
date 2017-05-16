@@ -238,7 +238,7 @@ class TaskComponent extends Component
 		$img_s = Yii::$app->homeUrl.'folderuser/'.$uid.'profile.png?'.time();
 		if(!file_exists($img))
 		{
-			$img_s = Yii::$app->homeUrl.'css/img/picture.jpg?'.time();
+			$img_s = Yii::$app->homeUrl.'css/img/myAvatar.png?'.time();
 		}
 		
 		return $img_s;
