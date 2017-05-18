@@ -69,7 +69,7 @@ if(!$b_name)
                             <li><a href="'.Yii::$app->homeUrl.'profile"><i class="fa fa-user icon-mn"></i>&nbsp;Setting Profile</a></li>
                             <li><a href="'.Yii::$app->homeUrl.'map-profile"><i class="fa fa-map-marker icon-mn"></i>&nbsp;Lokasi Saya</a></li>
                             <li class="divider"></li>
-                            <li><a href="'.Yii::$app->homeUrl.'site/logout" data-method="post"><i class="fa fa-map-marker icon-mn"></i>&nbsp;Logout</a></li>
+                            <li><a href="'.Yii::$app->homeUrl.'site/logout" data-method="post"><i class="fa fa-key icon-mn"></i>&nbsp;Logout</a></li>
                           </ul>
                         </li>';
             }
