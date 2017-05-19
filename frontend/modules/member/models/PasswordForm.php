@@ -1,13 +1,15 @@
 <?php
-namespace backend\modules\profile\models;
+namespace frontend\modules\member\models;
 
-use common\models\User;
-use yii\base\Model;
 use Yii;
-
+use yii\helpers\Html;
+use yii\base\Model;
+use app\components\Constants;
+use common\models\Member;
 /**
- * Signup form
+ * Post form
  */
+
 class PasswordForm extends Model
 {
 	
@@ -50,69 +52,36 @@ class PasswordForm extends Model
             }
         }
     }
-	
+
+	public function chagepassword()
+    {
+        if ($this->validate()) {
+            $user = new Member();
+            $user->setPassword($this->password);
+            if ($user->save(false)) {
+				return true;
+            }
+        }
+
+        return null;
+    }
+
+    public function getUser()
+    {
+        $this->_user = Member::findOne(Yii::$app->user->identity->id);
+        return $this->_user;
+    } 
+
 	/**
      * @inheritdoc
      */
     public function attributeLabels()
     {
         return [
-            'password' => 'Old Password',
-            'new_password' => 'New Password',
-            'password_repeat' => 'Repeat New Password',
+            'oldpass'=>'Kata sandi lama',
+            'newpass'=>'Kata sandi baru',
+            'repeatnewpass'=>'Ulangi kata sandi baru',
         ];
     }
 	
-
-    /**
-     * Signs user up.
-     *
-     * @return User|null the saved model or null if saving fails
-     */
-	public function chagepassword()
-    {
-        if ($this->validate()) {
-            $user = new User();
-            //$user->username = trim(strip_tags($this->username));
-            //$user->firstname = trim(strip_tags($this->firstname));
-            //$user->lastname = trim(strip_tags($this->lastname));
-            //$user->email = trim(strip_tags($this->email));
-            $user->setPassword($this->password);
-            //$user->generateAuthKey();
-            if ($user->save()) {
-			
-            }
-        }
-
-        return null;
-    }
-	
-	/**
-     * Resets password.
-     *
-     * @return boolean if password was reset.
-     */
-    public function resetPassword()
-    {
-		if ($this->validate()) {
-			$user = $this->_user;
-			$user->setPassword($this->new_password);
-			$user->removePasswordResetToken();
-
-			return $user->save();
-		}
-		
-		return null;
-    }
-	
-	/**
-     * Finds user by [[userid]]
-     *
-     * @return User|null
-     */
-    public function getUser()
-    {
-        $this->_user = User::findOne(Yii::$app->user->identity->id);
-        return $this->_user;
-    } 
 }
