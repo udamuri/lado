@@ -50,10 +50,17 @@ if($type == 'message')
 					</ul>
 					<hr>
 					<?php if($type == 'profil') { ?>
-
 					<div class="row">
-					    <div class="col-md-6">
+					    <div class="col-md-6 col-sm-12 col-xs-12">
 					        <?= $this->render('_form_profile', ['model'=>$model, 'get'=>$get]);?>
+					    </div>
+					</div>
+					<?php } ?>
+
+					<?php if($type == 'password') { ?>
+					<div class="row">
+					    <div class="col-md-6 col-sm-12 col-xs-12">
+					        <?= $this->render('_form_password', ['model'=>$model]);?>
 					    </div>
 					</div>
 					<?php } ?>

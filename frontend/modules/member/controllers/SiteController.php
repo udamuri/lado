@@ -9,6 +9,7 @@ use yii\web\Controller;
 use yii\filters\VerbFilter;
 use yii\filters\AccessControl;
 use frontend\modules\member\models\ProfileForm;
+use frontend\modules\member\models\PasswordForm;
 
 
 /**
@@ -90,6 +91,10 @@ class SiteController extends Controller
 	            }
 	        }
     	}
+        else if($type == 'password')
+        {
+            $model = new PasswordForm();
+        }
     	//echo $type;
         return $this->render('index',
         	[
