@@ -64,10 +64,9 @@ if(!$b_name)
                 $menuItems_r[] = '<li class="dropdown padding_null">
                           <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false" ><img class="profile_picture_header its_me_class_bro" src="'.Yii::$app->mycomponent->userAvatar(Yii::$app->user->identity->id).'"/></a>
                           <ul class="dropdown-menu" role="menu">
-                            <li class="dropdown-header">'.Yii::$app->user->identity->firstname.'</li>
+                            <li class="dropdown-header">'.Yii::$app->user->identity->firstname.' '.Yii::$app->user->identity->lastname.'</li>
                             <li class="divider"></li>
                             <li><a href="'.Yii::$app->homeUrl.'profile"><i class="fa fa-user icon-mn"></i>&nbsp;Setting Profile</a></li>
-                            <li><a href="'.Yii::$app->homeUrl.'map-profile"><i class="fa fa-map-marker icon-mn"></i>&nbsp;Lokasi Saya</a></li>
                             <li class="divider"></li>
                             <li><a href="'.Yii::$app->homeUrl.'site/logout" data-method="post"><i class="fa fa-key icon-mn"></i>&nbsp;Logout</a></li>
                           </ul>

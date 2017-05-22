@@ -25,15 +25,13 @@ else if($type == 'photo')
 {
 	$act_po = 'class="active"';
 }
+else if($type == 'message')
+{
+	$act_me = 'class="active"';
+}
 else
 {
 	$act_p = 'class="active"';
-}
-
-
-if($type == 'message')
-{
-	$act_me = 'class="active"';
 }
 
 ?>

@@ -10,7 +10,7 @@ use yii\bootstrap\ActiveForm;
 
 <?php $form = ActiveForm::begin(['id' => 'form-signup']); ?>
 
-    <?= $form->field($model, 'password')->textInput(['autofocus' => true, 'class'=>'form-control input-lg']) ?>
+    <?= $form->field($model, 'password')->passwordInput(['autofocus' => true, 'class'=>'form-control input-lg']) ?>
 
     <?= $form->field($model, 'new_password')->passwordInput(['class'=>'form-control input-lg']) ?>
     

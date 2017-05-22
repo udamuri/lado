@@ -37,6 +37,11 @@ if($b_feature)
   	$myfeature = Yii::$app->mycomponent->getHomeCategory($b_feature, 3, 'asc');
 }
 
+$b_product = Yii::$app->mycomponent->frontendOptions('_product');
+if($b_product)
+{
+    $myproduct = Yii::$app->mycomponent->getHomeCategory($b_product, 20, 'asc');
+}
 ?>
 
 <section class="header">
@@ -128,7 +133,70 @@ if($b_feature)
                 <div class="col-md-12">
                 <div class="carousel slide" data-ride="carousel" data-type="multi" data-interval="3000" id="myCarousel">
                   <div class="carousel-inner">
-                    <div class="item active">
+                    <?php
+                            if(isset($myproduct) && count($myproduct) > 0)
+                            {
+                                $num = 0;
+                                foreach ($myproduct as $value) 
+                                {
+                                  $num++;
+                                  $act = '';
+                                  if($num === 1)
+                                  {
+                                    $act = 'active';
+                                  }
+                                  echo '<div class="item '.$act.'">
+                                          <div class="col-md-3 col-sm-6 col-xs-12">
+                                            <div class="panel panel-self">
+                                                <div class="panel-heading">'.Html::encode($value['post_title']).'</div>
+                                                <div class="panel-body">
+                                                    <div class="image-header">
+                                                        <img src="'.Yii::$app->homeUrl.'css/img/buffalo.jpeg" class="img-responsive center-block">
+                                                    </div>
+
+                                                    <div class="caro-text">
+                                                        '.Html::decode($value['post_excerpt']).'
+                                                    </div>
+                                                </div>
+                                                <div class="panel-footer">Panel footer</div>
+                                              </div> 
+                                          </div>
+                                        </div>';
+                                }
+                            }
+                            else
+                            {
+                                $num = 0;
+                                for ($i=0;$i<10;$i++) 
+                                {
+                                  $num++;
+                                  $act = '';
+                                  if($num === 1)
+                                  {
+                                    $act = 'active';
+                                  }
+                                  echo '<div class="item '.$act.'">
+                                          <div class="col-md-3 col-sm-6 col-xs-12">
+                                            <div class="panel panel-self">
+                                                <div class="panel-heading">Lorem Ipsum</div>
+                                                <div class="panel-body">
+                                                    <div class="image-header">
+                                                        <img src="'.Yii::$app->homeUrl.'css/img/buffalo.jpeg" class="img-responsive center-block">
+                                                    </div>
+
+                                                    <div class="caro-text">
+                                                        Lorem Ipsum Dolor Sit Amet
+                                                    </div>
+                                                </div>
+                                                <div class="panel-footer">Panel footer</div>
+                                              </div> 
+                                          </div>
+                                        </div>';
+                                }
+                            }
+
+                        ?>
+                    <!-- <div class="item active">
                       <div class="col-md-3 col-sm-6 col-xs-12">
                           <div class="panel panel-self">
                             <div class="panel-heading">Panel heading without title</div>
@@ -262,7 +330,7 @@ if($b_feature)
                             </div>
                             <div class="panel-footer">Panel footer</div>
                           </div> 
-                      </div>
+                      </div> -->
                     </div>
                   </div>
                   <a class="left carousel-control" href="#myCarousel" data-slide="prev"><i class="glyphicon glyphicon-chevron-left"></i></a>

@@ -32,7 +32,7 @@ class PasswordForm extends Model
             ['new_password', 'string', 'min' => 6],
 			
 			['password_repeat','required'],
-			['password_repeat', 'compare', 'compareAttribute' => 'new_password'],
+			['password_repeat', 'compare', 'compareAttribute' => 'new_password', 'message'=>'Ulangi kata sandi baru harus sama dengan "Kata sandi baru"'],
         ];
     }
 	
@@ -56,11 +56,9 @@ class PasswordForm extends Model
 	public function chagepassword()
     {
         if ($this->validate()) {
-            $user = new Member();
-            $user->setPassword($this->password);
-            if ($user->save(false)) {
-				return true;
-            }
+            $user = $this->getUser();
+            $user->setPassword($this->new_password);
+			return $user->save(false);
         }
 
         return null;
@@ -78,9 +76,9 @@ class PasswordForm extends Model
     public function attributeLabels()
     {
         return [
-            'oldpass'=>'Kata sandi lama',
-            'newpass'=>'Kata sandi baru',
-            'repeatnewpass'=>'Ulangi kata sandi baru',
+            'password'=>'Kata sandi lama',
+            'new_password'=>'Kata sandi baru',
+            'password_repeat'=>'Ulangi kata sandi baru',
         ];
     }
 	

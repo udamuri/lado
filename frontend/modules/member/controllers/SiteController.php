@@ -86,14 +86,23 @@ class SiteController extends Controller
 	            }
 	            else
 	            {
-	                 Yii::$app->session->setFlash('error', 'Error Message');
-	                 return $this->refresh()->send();
+	                 Yii::$app->session->setFlash('error', 'Terjadi kesalahan saat mengganti profile');
 	            }
 	        }
     	}
         else if($type == 'password')
         {
             $model = new PasswordForm();
+            if ($model->load(Yii::$app->request->post())) {
+                if ($pass = $model->chagepassword()) {
+                    \Yii::$app->getSession()->setFlash('success', 'Sandi Berhasil di rubah');
+                    return $this->refresh()->send();
+                }
+                else
+                {
+                     Yii::$app->session->setFlash('error', 'Terjadi kesalahan saat mengganti sandi');
+                }
+            }
         }
     	//echo $type;
         return $this->render('index',
