@@ -45,6 +45,11 @@ use backend\models\TableCategory;
                             {
                               $model->meta_tags = $value['meta_value'] ;
                             }
+
+                            if($value['meta_key'] === '_meta_image')
+                            {
+                              $model->meta_image = $value['meta_value'] ;
+                            }
                         }
                     }
                 }
@@ -102,6 +107,8 @@ use backend\models\TableCategory;
                     <?= $form->field($model, 'meta_description')->textArea(['placeholder'=>'characters. Most search engines use a maximum of 255 chars for the description.']); ?>
 
                     <?= $form->field($model, 'meta_tags')->textArea(['placeholder'=>'#bukittinggi#jakarta#yogyakarta#framework']); ?>
+                    
+                    <?= $form->field($model, 'meta_image')->textInput(['placeholder'=>'Image Url']); ?>
                  </div>
             </div>
 
@@ -143,10 +150,7 @@ use backend\models\TableCategory;
 
         <div class="modal-footer">
             <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-            <button type="button" class="btn btn-primary">Save changes</button>
         </div>
     </div>
   </div>
 </div>
-
-

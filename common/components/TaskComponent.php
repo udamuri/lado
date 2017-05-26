@@ -115,19 +115,20 @@ class TaskComponent extends Component
     	{
 	    	$arrExplode = explode(',', $id);
 	    	$query = new Query;
-	        $query->select('post_id, post_title, post_content, post_excerpt, post_url_alias')
-	            ->from('tbl_post')
+	        $query->select('tp.post_id, tp.post_title, tp.post_content, tp.post_excerpt, tp.post_url_alias, tm.meta_value')
+	            ->from('tbl_post tp')
+	            ->leftJoin('tbl_meta tm', 'tp.post_id=tm.post_id AND tm.meta_key="_meta_image"')
 	            ->where(['post_category_id'=>$arrExplode])
 	            ->limit($data_max);
 
 	        $mysort = strtolower($sort);
 	        if($mysort === 'asc')
 	        {
-	        	$query->orderBy(['post_id'=>SORT_ASC]);	
+	        	$query->orderBy(['tp.post_id'=>SORT_ASC]);	
 	        }
 	        else if($mysort === 'desc')
 	        {
-	        	$query->orderBy(['post_id'=>SORT_DESC]);
+	        	$query->orderBy(['tp.post_id'=>SORT_DESC]);
 	        }
 	        else
 	        {
@@ -136,6 +137,7 @@ class TaskComponent extends Component
 
 	        $rows = $query->all();
 	        
+
 	        return $rows;
     	}
     	else

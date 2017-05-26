@@ -52,15 +52,7 @@ function post()
 			var url = $(this).data('imgurl');
 			if(PostObj.ckeditor !== false)
 			{
-				
-				if($('#banner-post').is(':checked'))
-				{
-					$('#postform-meta_image').val(url);
-				}
-				else
-				{
-					CKEDITOR.instances[PostObj.ckeditor].insertHtml('<img class="img-responsive" src="'+url+'" >');
-				}
+				CKEDITOR.instances[PostObj.ckeditor].insertHtml('<img class="img-responsive" src="'+url+'" >');
 			}
 
 			if(PostObj.slide !== false)
@@ -76,14 +68,7 @@ function post()
 			var url = $(this).data('imgurl');
 			if(PostObj.ckeditor !== false)
 			{
-				if($('#banner-post').is(':checked'))
-				{
-					$('#postform-meta_image').val(url);
-				}
-				else 
-				{
-					CKEDITOR.instances[PostObj.ckeditor].insertHtml('<img class="img-responsive" src="'+url+'" >');
-				}
+				CKEDITOR.instances[PostObj.ckeditor].insertHtml('<img class="img-responsive" src="'+url+'" >');
 			}
 
 			if(PostObj.slide !== false)
@@ -178,11 +163,6 @@ function post()
 					var models = arrData['models'];
 					if(typeof models == 'object')
 					{
-						html += '<div class="row">' +
-									'<div class="col-md-12">'+
-										'<input id="banner-post" type="checkbox" name="vehicle" value="Bike"> Banner <br> ' +
-									'</div>'+
-								'</div>';
 						for(var i=0;i<models.length;i++)
 						{
 							html += '<div class="col-lg-2 col-md-2 col-sm-6 col-xs-12 margin-bottom20">'+
