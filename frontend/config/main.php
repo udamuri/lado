@@ -57,6 +57,7 @@ return [
                 'signup'=>'site/signup',
                 'profile'=>'member/site/index',
 		        'profile/<type:[a-z]+>'=>'member/site/index',
+                '<slug:[a-z0-9\-_\.]+>'=>'site/node'
             ],
         ],
     ],

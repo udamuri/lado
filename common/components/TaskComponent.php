@@ -119,6 +119,7 @@ class TaskComponent extends Component
 	            ->from('tbl_post tp')
 	            ->leftJoin('tbl_meta tm', 'tp.post_id=tm.post_id AND tm.meta_key="_meta_image"')
 	            ->where(['post_category_id'=>$arrExplode])
+	            ->andWhere(['post_status'=>1])
 	            ->limit($data_max);
 
 	        $mysort = strtolower($sort);

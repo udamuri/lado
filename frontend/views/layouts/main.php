@@ -118,7 +118,7 @@ if($homecheker=='app-frontend/site/index')
         <div class="container">
           <div class="row">
               <div class="col-md-4 col-sm-12 col-xs-12">
-                  <h4 class="text-center">Lado Mearh</h4>
+                  <h4 class="text-center">Lado Merah</h4>
                   <p>
                     77 Beach Drive, St. Croix, , Virgin Islands, 5689 
                   </p>
@@ -138,7 +138,7 @@ if($homecheker=='app-frontend/site/index')
               </div>  
 
               <div class="col-md-4 col-sm-12 col-xs-12">
-                  <h4 class="text-center">Follow</h4>
+                  <h4 class="text-center">Ikuti</h4>
                    <p class="text-center">
                       <a href="#"><i class="fa fa-facebook-official me-fb" aria-hidden="true"></i></a>
                       <a href="#"><i class="fa fa-twitter-square me-twit" aria-hidden="true"></i></a>

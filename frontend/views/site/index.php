@@ -164,7 +164,7 @@ if($b_product)
                                                         '.Html::decode($value['post_excerpt']).'
                                                     </div>
                                                 </div>
-                                                <div class="panel-footer">Panel footer</div>
+                                                <div class="panel-footer text-right"><a class="btn btn-default btn-sm" href="'.Yii::$app->homeUrl.$value['post_url_alias'].'" >Baca...</a></div>
                                               </div> 
                                           </div>
                                         </div>';
@@ -187,9 +187,9 @@ if($b_product)
                                                 <div class="panel-heading">Lorem Ipsum</div>
                                                 <div class="panel-body">
                                                     <div class="image-header">
-                                                        <img src="'.Yii::$app->homeUrl.'css/img/buffalo.jpeg" class="img-responsive center-block">
+                                                        <img src="'.Yii::$app->homeUrl.'css/img/buffalo.jpeg" class="img-center-block">
                                                     </div>
-
+                                                    <div class="clearfix"></div>
                                                     <div class="caro-text">
                                                         Lorem Ipsum Dolor Sit Amet
                                                     </div>

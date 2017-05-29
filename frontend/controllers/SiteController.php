@@ -4,6 +4,7 @@ namespace frontend\controllers;
 use Yii;
 use yii\base\InvalidParamException;
 use yii\web\BadRequestHttpException;
+use yii\web\NotFoundHttpException;
 use yii\web\Controller;
 use yii\filters\VerbFilter;
 use yii\filters\AccessControl;
@@ -12,6 +13,7 @@ use frontend\models\PasswordResetRequestForm;
 use frontend\models\ResetPasswordForm;
 use frontend\models\SignupForm;
 use frontend\models\ContactForm;
+use frontend\models\NodeForm;
 
 /**
  * Site controller
@@ -191,7 +193,6 @@ class SiteController extends Controller
             'model' => $model,
         ]);
     }
-    
 
     /**
      * Resets password.
@@ -221,9 +222,23 @@ class SiteController extends Controller
         ]);
     }
     
-
-    public function actionNode()
+     /**
+     * Requests Node.
+     *
+     * @param string $slug
+     * @return mixed
+     */
+    public function actionNode($slug)
     {
-        
+        $model = new NodeForm;
+        $model->slug = $slug;
+        if($model->checkSlug()) {
+            return $this->render('node', [
+                'model' => $model,
+            ]);
+        } else {
+            throw new NotFoundHttpException('Halaman tidak ditemukan.');
+        }
+    
     }
 }
