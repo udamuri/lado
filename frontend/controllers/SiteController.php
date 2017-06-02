@@ -15,6 +15,7 @@ use frontend\models\SignupForm;
 use frontend\models\ContactForm;
 use frontend\models\NodeForm;
 
+
 /**
  * Site controller
  */
@@ -232,9 +233,9 @@ class SiteController extends Controller
     {
         $model = new NodeForm;
         $model->slug = $slug;
-        if($model->checkSlug()) {
+        if($model->checkSlug() && is_array($model->checkSlug())) {
             return $this->render('node', [
-                'model' => $model,
+                'model' => $model->checkSlug(),
             ]);
         } else {
             throw new NotFoundHttpException('Halaman tidak ditemukan.');

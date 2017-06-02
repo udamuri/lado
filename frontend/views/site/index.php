@@ -146,7 +146,7 @@ if($b_product)
                                     $act = 'active';
                                   }
 
-                                  $imgurl = Yii::$app->homeUrl.'css/img/buffalo.jpeg';
+                                  $imgurl = Yii::$app->homeUrl.'css/img/buffalo.jpeg?1';
                                   if($value['meta_value'] !== '')
                                   {
                                     $imgurl = $value['meta_value'];
@@ -157,7 +157,7 @@ if($b_product)
                                                 <div class="panel-heading">'.Html::encode($value['post_title']).'</div>
                                                 <div class="panel-body">
                                                     <div class="image-header">
-                                                        <img src="'.$imgurl.'" class="img-responsive center-block">
+                                                        <img src="'.$imgurl.time().'" class="img-responsive center-block">
                                                     </div>
 
                                                     <div class="caro-text">
