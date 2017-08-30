@@ -65,6 +65,9 @@ return [
         'member' => [
             'class' => 'app\modules\member\module',
         ],
+        'api' => [
+            'class' => 'app\modules\api\module',
+        ],
     ],
     'params' => $params,
 ];
